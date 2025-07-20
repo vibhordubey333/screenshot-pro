@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Pro</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📸 Screenshot Pro</h1>
+            <p>Capture any webpage, including DRM content</p>
+        </div>
+        
+        <div class="controls">
+            <button id="captureVisible" class="btn btn-primary">
+                <span class="icon">📷</span>
+                Capture Visible Area
+            </button>
+            
+            <button id="captureFullPage" class="btn btn-secondary">
+                <span class="icon">📄</span>
+                Capture Full Page
+            </button>
+            
+            <button id="captureSelection" class="btn btn-tertiary">
+                <span class="icon">✂️</span>
+                Select Area
+            </button>
+        </div>
+        
+        <div class="options">
+            <div class="option-group">
+                <label for="format">Format:</label>
+                <select id="format" class="select">
+                    <option value="png">PNG</option>
+                    <option value="jpeg">JPEG</option>
+                    <option value="webp">WebP</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="quality">Quality:</label>
+                <input type="range" id="quality" min="1" max="100" value="90" class="slider">
+                <span id="qualityValue">90%</span>
+            </div>
+        </div>
+        
+        <div class="status" id="status"></div>
+        
+        <div class="footer">
+            <button id="openSettings" class="btn btn-text">Settings</button>
+            <button id="viewHistory" class="btn btn-text">History</button>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html> 

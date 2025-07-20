@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <h1>Screenshot Pro Icon Generator</h1>
+    <p>This page generates basic icons for the extension. Right-click on each canvas and save as PNG.</p>
+    
+    <div style="margin: 20px 0;">
+        <h3>16x16 Icon</h3>
+        <canvas id="icon16" width="16" height="16"></canvas>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>32x32 Icon</h3>
+        <canvas id="icon32" width="32" height="32"></canvas>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>48x48 Icon</h3>
+        <canvas id="icon48" width="48" height="48"></canvas>
+    </div>
+    
+    <div style="margin: 20px 0;">
+        <h3>128x128 Icon</h3>
+        <canvas id="icon128" width="128" height="128"></canvas>
+    </div>
+
+    <script>
+        function drawIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            // Draw background circle
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 2, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Draw camera body
+            const cameraWidth = size * 0.5;
+            const cameraHeight = size * 0.375;
+            const cameraX = (size - cameraWidth) / 2;
+            const cameraY = (size - cameraHeight) / 2;
+            
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.fillRect(cameraX, cameraY, cameraWidth, cameraHeight);
+            
+            // Draw camera lens
+            const lensRadius = size * 0.125;
+            ctx.fillStyle = '#333';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, lensRadius, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Draw inner lens
+            const innerRadius = lensRadius * 0.75;
+            ctx.fillStyle = '#fff';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, innerRadius, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Draw center dot
+            const centerRadius = lensRadius * 0.5;
+            ctx.fillStyle = '#333';
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, centerRadius, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+        
+        // Generate all icons
+        drawIcon('icon16', 16);
+        drawIcon('icon32', 32);
+        drawIcon('icon48', 48);
+        drawIcon('icon128', 128);
+    </script>
+</body>
+</html> 
